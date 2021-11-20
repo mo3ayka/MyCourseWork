@@ -1,0 +1,35 @@
+﻿<Window x:Class="TestCursovoi.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestCursovoi"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="400" Width="500"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown" Visibility="{Binding Visibility, Mode=TwoWay}">
+    <Grid>
+        <Border MinWidth="400" Margin="25" Background="White" VerticalAlignment="Center" MaxHeight="400" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0" RenderingBias="Quality"/>
+            </Border.Effect>
+            <Grid>
+                <StackPanel Margin="30">
+                    <Image Source="pack://application:,,,/Resources/icon.ico" Width="70" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="Авторизация" FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding Username}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <PasswordBox x:Name="passwordBox" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                    <TextBlock Text="{Binding Status}" HorizontalAlignment="Center" Foreground="Red" Margin="0 10 0 0" TextWrapping="Wrap"/>
+                    <Button Width="150" Content="Войти" Margin="0 15 0 0" Command="{Binding LoginCommand, Mode=OneTime}" CommandParameter="{Binding ElementName=passwordBox}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Width="40" Height="40" Margin="15" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="Transparent"  Click="Button_ClickClose">
+                        <materialDesign:PackIcon Kind="Close" Foreground="#3700b3" Height="20" Width="20"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

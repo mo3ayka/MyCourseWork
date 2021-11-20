@@ -1,0 +1,11 @@
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DBWorkLogic.dll
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DBWorkLogic.pdb
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DevExpress.Data.v21.1.dll
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DevExpress.Xpo.v21.1.dll
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DevExpress.Data.v21.1.xml
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\bin\Debug\DevExpress.Xpo.v21.1.xml
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\obj\Debug\DBWorkLogic.csprojAssemblyReference.cache
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\obj\Debug\DBWorkLogic.csproj.CoreCompileInputs.cache
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\obj\Debug\DBWorkLogic.csproj.CopyComplete
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\obj\Debug\DBWorkLogic.dll
+C:\Users\Nikita\source\repos\TestCursovoi\DBWorkLogic\obj\Debug\DBWorkLogic.pdb

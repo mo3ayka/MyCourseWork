@@ -28,6 +28,8 @@ namespace TestCursovoi
         {
             ViewModel = viewModel;
             InitializeComponent();
+            Loaded += LoginWindow_Loaded;
+            MouseDown += LoginWindow_MouseDown;
         }
 
         public IViewModel ViewModel
@@ -36,7 +38,7 @@ namespace TestCursovoi
             set { DataContext = value; }
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void LoginWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
@@ -44,7 +46,20 @@ namespace TestCursovoi
 
         private void Button_ClickClose(object sender, RoutedEventArgs e)
         {
-            Process.GetCurrentProcess().Kill();
+            this.DialogResult = false;
+            this.Close();
+        }
+
+        private void LoginWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is ICloseWindow vm)
+            {
+                vm.Close += () =>
+                {
+                    this.DialogResult = true;
+                    this.Close();
+                };
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestCursovoi.Models;
-using TestCursovoi.ViewModel;
 
 namespace TestCursovoi.View
 {

@@ -11,7 +11,7 @@ using TestCursovoi.DBWorkLogic;
 using TestCursovoi.Models;
 using TestCursovoi.View;
 
-namespace TestCursovoi.ViewModel
+namespace TestCursovoi
 {
     public class MainViewModel : IViewModel, INotifyPropertyChanged
     {

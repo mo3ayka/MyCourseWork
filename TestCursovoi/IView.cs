@@ -15,6 +15,8 @@ namespace TestCursovoi
         }
 
         void Show();
+
+        bool? ShowDialog();
     }
 
     public interface IViewModel { }

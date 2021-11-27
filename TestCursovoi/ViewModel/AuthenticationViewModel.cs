@@ -5,19 +5,16 @@ using System.Windows.Controls;
 using System.Security;
 using System.Windows;
 using TestCursovoi.View;
-using TestCursovoi.ViewModel;
 
 namespace TestCursovoi
 {
-    public class AuthenticationViewModel : IViewModel, INotifyPropertyChanged
+    public class AuthenticationViewModel : IViewModel, INotifyPropertyChanged, ICloseWindow
     {
         private readonly IAuthenticationService _authenticationService;
         
         public AuthenticationViewModel(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
-            _loginCommand = new DelegateCommand(Login, null);
-            _showViewCommand = new DelegateCommand(ShowView, null);
         }
 
         #region Properties
@@ -38,29 +35,20 @@ namespace TestCursovoi
             set { _status = value; NotifyPropertyChanged(nameof(Status)); }
         }
 
-        private Visibility _visibility;
-
-        public Visibility Visibility
-        {
-            get { return _visibility; }
-            set
-            {
-                _visibility = value;
-                NotifyPropertyChanged(nameof(Visibility));
-            }
-        }
-
         #endregion
 
         #region Commands
 
-        private readonly DelegateCommand _loginCommand;
+        private DelegateCommand _loginCommand;
 
-        public DelegateCommand LoginCommand { get { return _loginCommand; } }
+        public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(Login, null));
 
-        private readonly DelegateCommand _showViewCommand;
+        #endregion
 
-        public DelegateCommand ShowViewCommand { get { return _showViewCommand; } }
+        #region Actions
+
+        public Action Close { get; set; }
+
         #endregion
 
         private bool Authorization(object parameter)
@@ -80,7 +68,6 @@ namespace TestCursovoi
                 Username = string.Empty; //reset
                 passwordBox.Password = string.Empty; //reset
                 Status = string.Empty;
-                Visibility = Visibility.Hidden;
 
                 return true;
             }
@@ -103,20 +90,7 @@ namespace TestCursovoi
         private void Login(object parameter)
         {
             if (Authorization(parameter))
-                ShowView(parameter);
-        }
-
-        private void ShowView(object parameter)
-        {
-            Status = string.Empty;
-            Window view;
-            if (parameter == null)
-                view = new MainWindow(new MainViewModel());
-            else
-                view = new MainWindow(new MainViewModel());
-
-            if (view.ShowDialog() == true)
-                Visibility = Visibility.Visible;
+                Close.Invoke();
         }
 
         public void Validate(object parameter)
@@ -128,6 +102,7 @@ namespace TestCursovoi
         }
 
         #region INotifyPropertyChanged Members
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string propertyName)
@@ -135,6 +110,7 @@ namespace TestCursovoi
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }

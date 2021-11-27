@@ -78,12 +78,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.cs" />
     <Compile Include="BusinessApplication.cs" />
     <Compile Include="Helpers\AnonymousIdentity.cs" />
     <Compile Include="Helpers\CustomIdentity.cs" />
     <Compile Include="Helpers\CustomPrincipal.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Interfaces\ICloseWindow.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Models\AuthenticationService.cs" />
     <Compile Include="Models\ItemMenu.cs" />

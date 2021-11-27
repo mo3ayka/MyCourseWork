@@ -12,14 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestCursovoi.ViewModel;
 
 namespace TestCursovoi.View
 {
     /// <summary>
     /// Логика взаимодействия для ManagementView.xaml
     /// </summary>
-    public partial class ManagementView : UserControl, IView
+    public partial class ManagementView : UserControl
     {
         public ManagementView(ManagementViewModel viewModel)
         {
@@ -31,11 +30,6 @@ namespace TestCursovoi.View
         {
             get { return DataContext as IViewModel; }
             set { DataContext = value; }
-        }
-
-        public void Show()
-        {
-            throw new NotImplementedException();
         }
     }
 }

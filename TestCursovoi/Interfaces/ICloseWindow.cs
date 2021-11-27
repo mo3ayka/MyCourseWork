@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestCursovoi
 {
-    public class ManagementViewModel : IViewModel
+    public interface ICloseWindow
     {
+        Action Close { get; set; }
     }
 }

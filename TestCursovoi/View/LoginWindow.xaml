@@ -8,8 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="MainWindow" Height="400" Width="500"
         AllowsTransparency="True" Background="Transparent" WindowStyle="None"
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown" Visibility="{Binding Visibility, Mode=TwoWay}">
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border MinWidth="400" Margin="25" Background="White" VerticalAlignment="Center" MaxHeight="400" CornerRadius="20">
             <Border.Effect>

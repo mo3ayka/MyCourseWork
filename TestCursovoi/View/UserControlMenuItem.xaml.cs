@@ -22,7 +22,6 @@ namespace TestCursovoi.View
     /// </summary>
     public partial class UserControlMenuItem : UserControl
     {
-        MainViewModel _mainViewModel;
         public UserControlMenuItem(ItemMenu itemMenu, MainViewModel mainViewModel)
         {
             InitializeComponent();
@@ -34,12 +33,40 @@ namespace TestCursovoi.View
             Visibility = itemMenu.SubItems == null || itemMenu.SubItems.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
 
             DataContext = itemMenu;
+
         }
+
+        #region Variables
+
+        private MainViewModel _mainViewModel;
+
+        private bool ignoreSelectionChanged = false;
+
+        #endregion
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(ignoreSelectionChanged)
+            {
+                ignoreSelectionChanged = false;
+                return;
+            }    
+            
             _mainViewModel.SelectedSubItem.Clear();
             _mainViewModel.SelectedSubItem.Add(((SubItem)((ListView)sender).SelectedItem).Screen);
+
+            //Очищает выделения в других Expander - ListView
+            foreach (var item in _mainViewModel.MenuElements.Where(item => item != this))
+                item.ClearSelection();
+        }
+
+        public void ClearSelection()
+        {
+            if (ListViewMenu.SelectedItem != null)
+            {
+                ignoreSelectionChanged = true;
+                ListViewMenu.SelectedItem = null;
+            }
         }
     }
 }
